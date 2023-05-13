@@ -2,6 +2,7 @@ import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Statistics from './Statictics/Statictics';
 import Section from './Section/Section';
 import React, { Component } from 'react';
+import Notification from './Statictics/Notification';
 export class App extends Component {
   state = {
     good: 0,
@@ -20,14 +21,17 @@ export class App extends Component {
           <FeedbackOptions onLeaveFeedback={this.handleClick}></FeedbackOptions>
         </Section>
         <Section title="Statistics">
-          <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-          ></Statistics>
+          {this.state.good + this.state.neutral + this.state.bad > 0 ? (
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+            ></Statistics>
+          ) : (
+            <Notification/>
+          )}
         </Section>
       </div>
     );
   }
 }
-
