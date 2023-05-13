@@ -2,7 +2,6 @@ import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Statistics from './Statictics/Statictics';
 import Section from './Section/Section';
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 export class App extends Component {
   state = {
     good: 0,
@@ -31,10 +30,4 @@ export class App extends Component {
     );
   }
 }
-App.propTypes = {
-  title: PropTypes.string.isRequired,
-  onLeaveFeedback: PropTypes.string.isRequired,
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
-};
+

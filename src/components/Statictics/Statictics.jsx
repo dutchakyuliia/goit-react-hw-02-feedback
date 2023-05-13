@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 class Statistics extends Component {
 render() {
     return (
@@ -18,3 +18,8 @@ render() {
 }
 
 export default Statistics;
+Statistics.propTypes = {
+  good: PropTypes.string.isRequired,
+  neutral: PropTypes.string.isRequired,
+  bad: PropTypes.string.isRequired,
+};
