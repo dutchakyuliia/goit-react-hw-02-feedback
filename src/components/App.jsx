@@ -9,16 +9,19 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
+  
   handleClick = name => () => {
+     console.log(name)
     this.setState(prevState => ({
       [name]: prevState[name] + 1,
     }));
   };
+  
   render() {
     return (
       <div>
         <Section title="Please leave feedback">
-          <FeedbackOptions onLeaveFeedback={this.handleClick}></FeedbackOptions>
+          <FeedbackOptions options = {Object.keys(this.state)}  onLeaveFeedback={this.handleClick}></FeedbackOptions>
         </Section>
         <Section title="Statistics">
           {this.state.good + this.state.neutral + this.state.bad > 0 ? (
@@ -28,7 +31,7 @@ export class App extends Component {
               bad={this.state.bad}
             ></Statistics>
           ) : (
-            <Notification/>
+            <Notification message="There is no feedback"/>
           )}
         </Section>
       </div>

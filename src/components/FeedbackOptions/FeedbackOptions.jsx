@@ -2,18 +2,28 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 class FeedbackOptions extends Component {
   render() {
+    console.log(this.props.options)
     return (
-      <div>
-        <button  onClick={this.props.onLeaveFeedback('good')}>Good</button>
-        <button onClick={this.props.onLeaveFeedback('neutral')}>Neutral</button>
-        <button onClick={this.props.onLeaveFeedback('bad')}>Bad</button>
+     <div>
+        {(this.props.options).map(reaction => {
+          return (
+            <button
+              type="button"
+              key={reaction}
+              onClick={this.props.onLeaveFeedback(reaction)}
+            >{reaction}</button>
+          );
+        })}
       </div>
     );
   }
 }
 
+//['good', 'neutral', 'bad']
+
 export default FeedbackOptions;
 
 FeedbackOptions.propTypes = {
-  onLeaveFeedback: PropTypes.func.isRequired 
+  onLeaveFeedback: PropTypes.func.isRequired,
+  options: PropTypes.object.isRequired
 };
